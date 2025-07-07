@@ -13,10 +13,4 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
-COPY deploy.sh /deploy.sh
-
-RUN chmod +x /deploy.sh
-
 EXPOSE 8080
-
-ENTRYPOINT ["/deploy.sh"]
