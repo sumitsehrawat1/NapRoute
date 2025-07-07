@@ -1,6 +1,9 @@
+server:
+  port: ${PORT}
+
 spring:
   datasource:
-    url: postgresql://root:5S0dC8OQYXR0thJLr1ds6UjvOxYncQi0@dpg-d1m0m66mcj7s73b1dj7g-a/naproute
+    url: jdbc:postgresql://dpg-d1m0m66mcj7s73b1dj7g-a/naproute
     username: root
     password: 5S0dC8OQYXR0thJLr1ds6UjvOxYncQi0
   jpa:
