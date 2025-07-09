@@ -17,6 +17,6 @@ COPY deploy.sh /deploy.sh
 
 RUN chmod +x /deploy.sh
 
-EXPOSE 8080
+EXPOSE 10000
 
 ENTRYPOINT ["/deploy.sh"]
