@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d1m0m66mcj7s73b1dj7g-a/naproute
-    username: root
-    password: 5S0dC8OQYXR0thJLr1ds6UjvOxYncQi0
+    url: jdbc:${DB_CONNECTION_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
