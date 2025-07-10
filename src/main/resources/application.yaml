@@ -20,3 +20,7 @@ security:
     - /geo-tag
     - /geo-tag/*
     - /geo/*
+
+nap:
+  service:
+    poll-time: ${service_poll_in_ms}
