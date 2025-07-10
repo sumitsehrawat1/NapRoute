@@ -37,12 +37,15 @@ public class UserGeoTagServiceImpl implements UserGeoTagService {
     }
 
     @Override
-    public UserGeoTagResponse update(UUID id, UserGeoTagRequest request) {
+    public UserGeoTagResponse toggleStatus(UUID id) {
         UserGeoTag userGeoTag = getById(id);
-        userGeoTag.setStatus(request.getStatus());
+        UserGeoTagStatus requestedStatus = UserGeoTagStatus.ACTIVE;
+        if(userGeoTag.getStatus().equals(UserGeoTagStatus.ACTIVE)){
+            requestedStatus = UserGeoTagStatus.CANCELLED;
+        }
+        userGeoTag.setStatus(requestedStatus);
         User user = getCurrentUser();
-
-        if(request.getStatus().equals(UserGeoTagStatus.ACTIVE) &&
+        if(requestedStatus.equals(UserGeoTagStatus.ACTIVE) &&
                 userGeoTagRepository.existsByUserAndStatus(user, UserGeoTagStatus.ACTIVE)) {
             throw NapException.of(ACTIVE_GEO_TAG_PRESENT);
         }

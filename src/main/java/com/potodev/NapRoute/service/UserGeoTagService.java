@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface UserGeoTagService {
     UserGeoTag getById(UUID id);
-    UserGeoTagResponse update(UUID id, UserGeoTagRequest request);
+    UserGeoTagResponse toggleStatus(UUID id);
     UserGeoTagResponse addUserGeoTag(UserGeoTagRequest request);
     List<UserGeoTagResponse> getUserGeoTags();
     UserGeoTag getActiveGeoTag(User user);

@@ -35,12 +35,11 @@ public class UserGeoTagController {
         return ResponseEntity.ok(UserGeoTagResponse.from(userGeoTagService.getById(id)));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/toggle-status")
     public ResponseEntity<UserGeoTagResponse> update(
-            @PathVariable UUID id,
-            @RequestBody @Valid UserGeoTagRequest request
+            @PathVariable UUID id
     ) {
-        return ResponseEntity.ok(userGeoTagService.update(id, request));
+        return ResponseEntity.ok(userGeoTagService.toggleStatus(id));
     }
 
     @GetMapping("")
