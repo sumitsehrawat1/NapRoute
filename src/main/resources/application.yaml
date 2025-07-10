@@ -14,5 +14,9 @@ security:
     - /health
   filter-urls:
     - /user/me
-    - /geoTag
     - /favourites
+    - /user/geo-tag
+    - /user/geo-tag/*
+    - /geo-tag
+    - /geo-tag/*
+    - /geo/*

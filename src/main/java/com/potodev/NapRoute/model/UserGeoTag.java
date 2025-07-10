@@ -3,6 +3,7 @@ package com.potodev.NapRoute.model;
 import com.potodev.NapRoute.enums.UserGeoTagStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +17,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "user_tags")
@@ -24,6 +28,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class UserGeoTag {
 
     @Id
@@ -40,8 +45,10 @@ public class UserGeoTag {
     @Column(nullable = false)
     private UserGeoTagStatus status;
 
-    private Instant triggeredAt;
+    @LastModifiedDate
+    private Instant updatedAt;
 
+    @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant addedAt = Instant.now();
 }
